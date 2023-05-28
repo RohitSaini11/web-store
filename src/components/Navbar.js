@@ -1,30 +1,30 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function Navbar(){
     return(
         <nav className=" shadow-lg bg-gray-100 py-4 px-5 flex justify-between items-center container mx-auto">
             <div className="">
-                <a className="text-gray-700 text-4xl" href="/">WebStore</a>
+                <Link className="text-gray-700 text-4xl" to="/">WebStore</Link>
             </div>
             <ul className="list-none flex justify-center gap-5">
                 <li>
-                    <a className="active:underline" href="/">Home</a>
+                    <Link className="active:underline" to="/">Home</Link>
                 </li>
                 <li>
-                    <a href="/About">About</a>
+                    <Link to="/About">About</Link>
                 </li>
                 <li>
-                    <a href="/Product">Product</a>
+                    <Link to="/Product">Product</Link>
                 </li>
                 <li>
-                    <a href="/Booking">Booking</a>
+                    <Link to="/Booking">Booking</Link>
                 </li>
                 <li>
-                    <a href="/Contact">Contact</a>
+                    <Link to="/Contact">Contact</Link>
                 </li>
                 <li>
-                    <a href="/Cart">Cart</a>
+                    <Link to="/Cart">Cart</Link>
                 </li>
             </ul>
         </nav>

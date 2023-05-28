@@ -28,15 +28,15 @@ function App() {
      <Navbar />
     <Routes>
 
-      <Route path="/" element={<Home />} />
+      <Route exact path="/" element={<Home />} />
         
       <Route exact path="/About" element={<About />} />
         
-      <Route path="/Product" element={<Product/>} />
+      <Route exact path="/Product" element={<Product/>} />
        
-      <Route path="/Booking" element={<Booking />} />
+      <Route exact path="/Booking" element={<Booking />} />
         
-      <Route path="/Contact" element={<Contact/>} />
+      <Route exact path="/Contact" element={<Contact/>} />
     
     </Routes>
     </div>
