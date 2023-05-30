@@ -1,10 +1,10 @@
-import Navbar from "./Navbar";
-import Home from "./Home";
-import About from "./About";
-import Product from "./Product";
-import Booking from "./Booking";
-import Contact from "./Contact"
-// import { createBrowserRouter , RouterProvider } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Product from "./pages/Product";
+import Booking from "./pages/Booking";
+import Contact from "./pages/Contact";
+
 import 
 { 
   Routes,
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-    <div className="App">
+    
      <Navbar />
     <Routes>
 
@@ -39,7 +39,7 @@ function App() {
       <Route exact path="/Contact" element={<Contact/>} />
     
     </Routes>
-    </div>
+    
     </>
   );
 }
