@@ -6,19 +6,34 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 function Slider() {
   const slides = [
     {
-      url: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2620&q=80',
+      url: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80',
+      headline: "Power and Portability at your Fingertips",
+      body: "Discover our wide range of laptops for all your computing needs. From ultrabooks to gaming laptops, our selection offers the perfect combination of power and portability for your lifestyle.",
+      category: "laptop",
     },
     {
-      url: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80',
+      url: 'https://images.unsplash.com/photo-1611926653670-e18689373857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9iaWxlJTIwYWR2ZXJ0aXNpbmd8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
+      headline: "Stay Connected on the Go",
+      body: "Keep up with the latest trends and stay connected on-the-go with our selection of smartphones. Choose from top brands and affordable options, with advanced features to enhance your mobile experience.",
+      category: "smartphone",
     },
     {
-      url: 'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80',
+      url: 'https://images.unsplash.com/photo-1619037961390-f2047d89bc55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c21hcnQlMjB3YXRjaGVzfGVufDB8fDB8fHwy&auto=format&fit=crop&w=500&q=60',
+      headline: "Track your Fitness and Stay Connected",
+      body: "Enhance your lifestyle with our range of smartwatches. Monitor your fitness goals and stay connected to your digital life with ease. Choose from popular brands and a variety of styles and features.",
+      category: "smartwatch",
     },
     {
       url: 'https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2253&q=80',
+      headline: "The Ultimate Gaming Experience",
+      body: "Take your gaming experience to the next level with our high-performance graphics cards. Choose from top brands and the latest technology for smooth and fast gameplay.",
+      category: "graphics card",
     },
     {
-      url: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80',
+      url: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2lyZWxlc3MlMjBlYXJwaG9uZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60',
+      headline: "Listen in Style and Comfort",
+      body: "Elevate your audio experience with our selection of earbuds and headphones. Choose from the latest models and top brands, with noise-cancelling and wireless options for a customized listening experience.",
+      category: "earbuds",
     },
   ];
 
@@ -47,8 +62,8 @@ function Slider() {
         className='w-full h-full bg-center bg-cover hover:backdrop-blur-lg duration-500 flex justify-center items-center'
       >
         <div className='flex flex-col gap-5 items-start pl-20 container bg-black bg-opacity-70 w-full h-full justify-center'>
-            <h1 className='text-7xl text-violet-50 font-medium w-4/5'>A good Heading!</h1>
-            <p  className="text-gray-50 w-3/5"> vacabulary enriched explanation of a Product category.</p>
+            <h1 className='text-7xl text-violet-50 font-medium w-4/5'>{slides[currentIndex].headline}</h1>
+            <p  className="text-gray-50 w-3/5"> {slides[currentIndex].body}</p>
             <Link 
                 to='/Product'
                 className=" text-violet-50  border mt-4 border-violet-50 hover:border-sky-400 hover:text-sky-500 duration-300 py-2 px-6"
