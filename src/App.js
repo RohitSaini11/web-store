@@ -4,6 +4,8 @@ import About from "./pages/About";
 import Product from "./pages/Product";
 import Booking from "./pages/Booking";
 import Contact from "./pages/Contact";
+import ProductDetails from "./components/ProductDetails";
+import Footer from "./components/Footer";
 
 import 
 { 
@@ -28,18 +30,22 @@ function App() {
      <Navbar />
     <Routes>
 
-      <Route exact path="/" element={<Home />} />
+      <Route  path="/" element={<Home />} />
         
-      <Route exact path="/About" element={<About />} />
+      <Route  path="/About" element={<About />} />
         
-      <Route exact path="/Product" element={<Product/>} />
-       
-      <Route exact path="/Booking" element={<Booking />} />
+      <Route  path="/Product" element={<Product/>} />
+
+      <Route path="Product/:id" element={<ProductDetails />} />
+
+      <Route path="/:id" element={<ProductDetails />} />
+
+      <Route  path="/Booking" element={<Booking />} />
         
-      <Route exact path="/Contact" element={<Contact/>} />
+      <Route  path="/Contact" element={<Contact/>} />
     
     </Routes>
-    
+    <Footer />
     </>
   );
 }

@@ -61,7 +61,7 @@ function Slider() {
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
         className='w-full h-full bg-center bg-cover hover:backdrop-blur-lg duration-500 flex justify-center items-center'
       >
-        <div className='flex flex-col gap-5 items-start pl-20 container bg-black bg-opacity-70 w-full h-full justify-center'>
+        <div className='flex flex-col gap-5 items-start pl-20 container bg-black/70 w-full h-full justify-center'>
             <h1 className='text-7xl text-violet-50 font-medium w-4/5'>{slides[currentIndex].headline}</h1>
             <p  className="text-gray-50 w-3/5"> {slides[currentIndex].body}</p>
             <Link 

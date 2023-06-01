@@ -30,7 +30,7 @@ const SingleProduct = ({ product }) => {
         <Link
           to={title}
           state={product}
-          className="hover:text-rose-50 text-gray-900 duration-300 flex justify-between items-center"
+          className="hover:text-rose-50 text-gray-900  duration-300 flex justify-between items-center"
         >
           <button className="text-orange-400 px-2 py-1 border border-orange-400 rounded-md hover:bg-orange-400 hover:text-orange-50 duration-300">
             More Info
@@ -40,7 +40,7 @@ const SingleProduct = ({ product }) => {
           onClick={() => console.log("ksk")}
           className="bg-orange-400 text-orange-50 hover:bg-orange-50 hover:text-orange-400 duration-300 border border-orange-400 px-2 py-1 rounded-md"
         >
-          add to cart
+          Add to cart
         </button>
       </div>
     </div>

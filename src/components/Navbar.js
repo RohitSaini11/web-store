@@ -5,7 +5,7 @@ function Navbar(){
     return(
         <nav className=" shadow-lg bg-gray-100 py-4 px-5 flex justify-between  items-center container mx-auto">
             <div className="">
-                <Link className="text-gray-700 text-4xl" to="/">WebStore</Link>
+                <Link className="text-orange-700 font-normal  text-4xl" to="/">WebStore</Link>
             </div>
             <ul className="list-none flex justify-center gap-5">
                 <li>
@@ -23,9 +23,9 @@ function Navbar(){
                 <li>
                     <Link to="/Contact">Contact</Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link to="/Cart">Cart</Link>
-                </li>
+                </li> */}
             </ul>
         </nav>
     );
