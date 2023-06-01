@@ -16,13 +16,13 @@ const Booking = () => {
           <h1 className="text-4xl w-[80%] ">
             Are you confused,which product is suitable for you ?
           </h1>
-          <h1 className="text-4xl font-semibold w-[80%] text-sky-500">
+          <h1 className="text-4xl font-semibold w-[80%] text-orange-500">
             Need consultation?
           </h1>
           <p className="text-lg">Get ultimate solution from our talent</p>
         </div>
         <button
-          className="text-gray-50 border rounded-full border-sky-500 px-10 bg-sky-500 py-2"
+          className="text-gray-50 border rounded-full border-orange-500 px-10 bg-orange-500 py-2"
           onClick={() => navigate("booking")}
         >
           BookNow

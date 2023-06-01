@@ -66,7 +66,7 @@ function Slider() {
             <p  className="text-gray-50 w-3/5"> {slides[currentIndex].body}</p>
             <Link 
                 to='/Product'
-                className=" text-violet-50  border mt-4 border-violet-50 hover:border-sky-400 hover:text-sky-500 duration-300 py-2 px-6"
+                className=" text-violet-50  border mt-4 border-violet-50 hover:border-orange-400 hover:text-orange-500 duration-300 py-2 px-6"
             >
                 Shop Now
             </Link>
