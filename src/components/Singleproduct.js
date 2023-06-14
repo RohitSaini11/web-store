@@ -23,9 +23,9 @@ const SingleProduct = ({ product }) => {
       <p className="text-sm text-gray-600">
         Brand: <span className="font-semibold capitalize">{brand}</span>
       </p>
-      <p className="text-sm text-gray-600">
+      {/* <p className="text-sm text-gray-600">
         Price: <span className="text-rose-500 font-semibold">{price}</span>
-      </p>
+      </p> */}
       <div className="flex justify-between items-center">
         <Link
           to={title}
