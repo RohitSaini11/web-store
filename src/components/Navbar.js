@@ -23,9 +23,9 @@ function Navbar(){
                 <li>
                     <Link to="/Contact">Contact</Link>
                 </li>
-                {/* <li>
+                <li>
                     <Link to="/Cart">Cart</Link>
-                </li> */}
+                </li>
             </ul>
         </nav>
     );

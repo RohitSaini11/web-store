@@ -1,7 +1,32 @@
 import { Link } from "react-router-dom";
+import { firestore } from "../firebase/firebase";
+
+
+
 
 const SingleProduct = ({ product }) => {
+
+
   const { img, title, brand, price } = product;
+  const value = parseFloat(price.match(/\d+/)[0]);
+  const db=firestore.collection("cart"); 
+  
+  let addProduct= () => {
+    db
+      .add({
+        img: img ,
+        price: value,
+        qty: 1,
+        title: product.title.slice(0, 20)
+      })
+      .then((docRef)=>{
+        console.log("Product added to firebase",docRef);
+      })
+      .catch((error)=>{
+        console.log('ERROR :',error);
+      })
+  }
+
   return (
     <div className="single-product flex flex-col bg-gray-50 gap-3 shadow-md hover:shadow-xl hover:scale-105 duration-300 px-4 py-7 rounded-sm overflow-hidden">
       <div className="flex justify-center">
@@ -23,9 +48,9 @@ const SingleProduct = ({ product }) => {
       <p className="text-sm text-gray-600">
         Brand: <span className="font-semibold capitalize">{brand}</span>
       </p>
-      {/* <p className="text-sm text-gray-600">
-        Price: <span className="text-rose-500 font-semibold">{price}</span>
-      </p> */}
+      <p className="text-sm text-gray-600">
+        Price: <span className="text-rose-500 font-semibold">₹ {value}</span>
+      </p>
       <div className="flex justify-between items-center">
         <Link
           to={title}
@@ -37,7 +62,8 @@ const SingleProduct = ({ product }) => {
           </button>
         </Link>
         <button
-          onClick={() => console.log("ksk")}
+          // onClick={() => console.log("ksk")}
+          onClick={addProduct}
           className="bg-orange-400 text-orange-50 hover:bg-orange-50 hover:text-orange-400 duration-300 border border-orange-400 px-2 py-1 rounded-md"
         >
           Add to cart

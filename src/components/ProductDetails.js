@@ -1,9 +1,30 @@
 import { Link, useLocation } from "react-router-dom";
+import { firestore } from "../firebase/firebase";
 
 const ProductDetails = () => {
   const { state: product } = useLocation();
 
   const { img, title, description, category, brand, rating, price } = product;
+  const value = parseFloat(price.match(/\d+/)[0]);
+  const db=firestore.collection("cart"); 
+  
+  let addProduct= () => {
+    db
+      .add({
+        img: img ,
+        price: value,
+        qty: 1,
+        title: product.title.slice(0, 20)
+      })
+      .then((docRef)=>{
+        console.log("Product added to firebase",docRef);
+      })
+      .catch((error)=>{
+        console.log('ERROR :',error);
+      })
+  }
+
+
   return (
     <section className="flex flex-col gap-16 py-10 bg-gray-100">
       <div className="container mx-auto flex justify-around  items-center w-[80%]">
@@ -18,7 +39,7 @@ const ProductDetails = () => {
           </p>
           <h2 className="text-4xl">{title.slice(0, 30)}</h2>
           <span className="font-semibold">
-            Price: <span className="text-2xl">{price}</span>
+            Price: <span className="text-2xl">₹ {value}</span>
           </span>
           <span className="font-semibold">Brand: {brand}</span>
           <div className="flex flex-col gap-2">
@@ -41,10 +62,10 @@ const ProductDetails = () => {
             </span>
           </h3>
           <button
-            onClick={() => console.log("ksk")}
+            onClick={addProduct}
             className="bg-orange-500 text-orange-50 px-2 py-1 mt-4"
           >
-            add to cart
+            Add to cart
           </button>
         </div>
       </div>

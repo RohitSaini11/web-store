@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Product from "./pages/Product";
 import Booking from "./pages/Booking";
 import Contact from "./pages/Contact";
+import Cart from "./pages/Cart";
 import ProductDetails from "./components/ProductDetails";
 import Footer from "./components/Footer";
 
@@ -41,6 +42,7 @@ function App() {
         
       <Route  path="/Contact" element={<Contact/>} />
     
+      <Route path="/Cart" element={<Cart />} />
     </Routes>
     <Footer />
     </>
