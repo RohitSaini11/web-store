@@ -88,7 +88,10 @@ const Cart = () => {
 
 
     return(
-        <div className="cart">          
+        <div className="cart"> 
+            {loading && <h1 className='font-semibold text-2xl text-center'>Loading....</h1>}
+            
+            {products.length === 0 && <div className='h-[5rem] flex items-center justify-center'><h1 className='font-semibold text-2xl'>Your cart is empty.</h1></div>}         
             { products.map((product) => {
                 return <CartItem  
                     product={product}
@@ -98,10 +101,12 @@ const Cart = () => {
                     onDeleteProduct={handleDeleteProduct}
                 />
             })} 
-            {loading && <h1>Loading....</h1>}
-            <div style={{ padding: 10, fontSize: 20, fontWeight: 'bolder' }}>
+            
+            {products.length !== 0 && 
+              <div style={{ padding: 10, fontSize: 20, fontWeight: 'bolder' }}>
                 Total: {getCartTotal()}
-            </div>          
+              </div> 
+            }  
         </div>        
     );
 }
