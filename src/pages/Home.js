@@ -3,9 +3,10 @@ import Whyus from "../components/Whyus";
 import  BestSelling from "../components/BestSelling";
 import FeatureProducts from "../components/Featuredproducts";
 import Booking from "../components/ProductConsultation";
+import GetUser from "../components/GetUser";
+import { useEffect } from "react";
 
-
-function Home(){
+function Home(props){
 
   return (
     <>

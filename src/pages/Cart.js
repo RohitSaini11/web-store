@@ -1,13 +1,14 @@
 import { useEffect ,useState } from 'react';
 import React from "react";
 import CartItem from '../components/CartItem';
-import { firestore } from "../firebase/firebase";
+import { auth,firestore } from "../firebase/firebase";
 
 const Cart = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+
+
     const db=firestore.collection("cart");
-    
     useEffect(() => {
         const unsubscribe = db
           .orderBy('price', 'asc')
@@ -88,7 +89,7 @@ const Cart = () => {
 
 
     return(
-        <div className="cart"> 
+        <div className="cart min-h-[85vh]"> 
             {loading && <h1 className='font-semibold text-2xl text-center'>Loading....</h1>}
             
             {products.length === 0 && <div className='h-[5rem] flex items-center justify-center'><h1 className='font-semibold text-2xl'>Your cart is empty.</h1></div>}         
@@ -103,8 +104,8 @@ const Cart = () => {
             })} 
             
             {products.length !== 0 && 
-              <div style={{ padding: 10, fontSize: 20, fontWeight: 'bolder' }}>
-                Total: {getCartTotal()}
+              <div style={{ padding: 10, fontSize: 20, fontWeight: 'bolder' ,textAlign:'center'}} className='w-[100%] flex justify-center'>
+                <p className=' w-[10rem]  bg-orange-400 text-white rounded-md p-1'>Total : ₹ {getCartTotal()}</p>
               </div> 
             }  
         </div>        

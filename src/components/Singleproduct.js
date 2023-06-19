@@ -53,7 +53,7 @@ const SingleProduct = ({ product }) => {
       </p>
       <div className="flex justify-between items-center">
         <Link
-          to={title}
+          to={`ShowDetails/${title}`}
           state={product}
           className="hover:text-rose-50 text-gray-900  duration-300 flex justify-between items-center"
         >
