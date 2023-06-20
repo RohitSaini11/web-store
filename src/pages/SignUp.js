@@ -2,17 +2,17 @@ import { Link , NavLink, useNavigate, } from "react-router-dom";
 import InputControl from "../components/InputControl";
 import {auth} from "../firebase/firebase";
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword ,updateProfile } from "firebase/auth";
 
 
-function SignUp(){
+function SignUp(props){
         const navigate = useNavigate();
         
         const [email,setEmail] = useState('');
         const [password,setPassword] = useState('');
         const [name,setName] = useState('');
         const [errorMsg,setErrorMsg] = useState('');
-
+        
         const createUser= async () =>{
                 if( name ==='' || email === '' || password === ''){
                     setErrorMsg("Fill all the Fields.");
@@ -23,13 +23,22 @@ function SignUp(){
                         //console.log(userCredential);
                         //Signed IN
                         const user = userCredential.user;
-                        console.log(user);
+                        props.setUser(user);
+                        updateProfile(user,{
+                            displayName: name
+                        });
                         navigate("/");
                         //
                     })
                     .catch((error) => {
                         const errorCode = error.code;
                         const errorMessage = error.message;
+                        if(errorCode === "auth/weak-password"){
+                            setErrorMsg("Weak Password! must have more than 6 characters");
+                        }
+                        else if(errorCode === "auth/email-already-in-use"){
+                            setErrorMsg("Email Already in Use by another Account!");
+                        }
                         console.log(errorCode,errorMessage);    
                     })
         }

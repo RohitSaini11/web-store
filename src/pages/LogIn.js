@@ -10,6 +10,8 @@ function LogIn(props){
     const [password, setPassword] = useState('');
     const [errorMsg,setErrorMsg] = useState('');
 
+    // create the the reset password functionality.
+
     const checkUser = () =>{
         if( email === '' || password === '' ){
             setErrorMsg("Fill all the Fields.");
@@ -21,13 +23,23 @@ function LogIn(props){
             // console.log(userCredential.user);
             //Logged In
             const user = userCredential.user;
+            props.setUser(user);
             // props.setUser(user);
-            navigate('/Home');
+            navigate('/');
             // console.log(user);
         })
         .catch((error)=>{
             const errorCode = error.code;
             const errorMessage = error.message;
+            if(errorCode === "auth/user-not-found"){
+                setErrorMsg("User Not Found!");
+            }
+            else if(errorCode === "auth/wrong-password"){
+                setErrorMsg("Incorrect Email / Password!");
+            }
+            else if(errorCode === "auth/too-many-requests"){
+                setErrorMsg("Too many failed attempts! Account Temporarily Blocked , Please try again later.");
+            }
             console.log(errorCode,errorMessage);
         })
     }

@@ -8,13 +8,13 @@ const CartItem= (props) => { //inherits properties from React.component
         onDecreaseQuantity, 
         onDeleteProduct } = props;
     return (
-        <div className="cart-item">
+        <div className="cart-item shadow-md min-w-[33%] bg-gray-100 hover:shadow-xl hover:scale-105 duration-300">
             <div className="left-block">
                 <img style={styles.image} src={img} alt=""/>
             </div>
             <div className="right-block">
                 <div style={ {fontSize:25} }>{title}</div>
-                <div style={ {color:'#777'} }>Rs:{price}</div>
+                <div style={ {color:'#777'} }>{price} $</div>
                 <div style={ {color:'#777'} }>Qty:{qty}</div>
                 <div className="cart-item-actions">
                     {/* BUTTONS */}

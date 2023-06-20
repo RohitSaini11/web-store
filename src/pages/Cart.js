@@ -2,14 +2,21 @@ import { useEffect ,useState } from 'react';
 import React from "react";
 import CartItem from '../components/CartItem';
 import { auth,firestore } from "../firebase/firebase";
-
-const Cart = () => {
+import GetUser from '../components/GetUser';
+import {useNavigate } from 'react-router-dom';
+const Cart = (props) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const user = {...props.user};
+    const navigate = useNavigate();
+    // const [showOrderBtn, setShowOrderBtn] = useState(false);
 
-
-    const db=firestore.collection("cart");
+    // const db=firestore.collection("cart");
+    const db=firestore.collection(`${user.uid}`);
     useEffect(() => {
+        if(user.uid === undefined){
+          navigate('/');
+        }
         const unsubscribe = db
           .orderBy('price', 'asc')
           .onSnapshot((snapshot) => {
@@ -25,6 +32,8 @@ const Cart = () => {
     
         return () => unsubscribe(); // Cleanup the listener on unmount
     }, [db]);
+
+    
 
     const handleIncreaseQuantity = (product) => {
         const index = products.indexOf(product);
@@ -87,13 +96,21 @@ const Cart = () => {
     };
 
 
-
     return(
-        <div className="cart min-h-[85vh]"> 
+      <div className="cart min-h-[85vh]"> 
+          <div className='grid grid-cols-3 '> 
             {loading && <h1 className='font-semibold text-2xl text-center'>Loading....</h1>}
             
-            {products.length === 0 && <div className='h-[5rem] flex items-center justify-center'><h1 className='font-semibold text-2xl'>Your cart is empty.</h1></div>}         
-            { products.map((product) => {
+            {products.length === 0 && !loading ? 
+              // <div className='h-[5rem] flex items-center justify-center'>
+              //   <h1 className='font-semibold text-2xl'>Your cart is empty.</h1>
+              // </div>  
+              <h1 className='font-semibold text-2xl'>Your cart is empty.</h1>
+              :
+              <></>
+            }         
+            { 
+              products.map((product) => {
                 return <CartItem  
                     product={product}
                     key={product.id}
@@ -101,14 +118,20 @@ const Cart = () => {
                     onDecreaseQuantity={handleDecreaseQuantity}
                     onDeleteProduct={handleDeleteProduct}
                 />
-            })} 
+               })
+            }    
+          </div> 
             
-            {products.length !== 0 && 
+            {
+              products.length !== 0 && 
               <div style={{ padding: 10, fontSize: 20, fontWeight: 'bolder' ,textAlign:'center'}} className='w-[100%] flex justify-center'>
-                <p className=' w-[10rem]  bg-orange-400 text-white rounded-md p-1'>Total : ₹ {getCartTotal()}</p>
+                <p className=' w-[10rem]  bg-orange-400 text-white rounded-md p-1'>Total: {getCartTotal()} $</p>
               </div> 
             }  
-        </div>        
+
+            {/* {showOrderBtn && <button className='text-orange-400 px-2 py-1 border border-orange-400 rounded-md hover:bg-orange-400 hover:text-orange-50 duration-300'>Place Order</button>} */}
+             {/* <button >orderBTn</button>  */}
+      </div>        
     );
 }
 

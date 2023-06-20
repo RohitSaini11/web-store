@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { firestore } from "../firebase/firebase";
-
+import GetUser from "./GetUser";
 
 
 
@@ -9,8 +9,12 @@ const SingleProduct = ({ product }) => {
 
   const { img, title, brand, price } = product;
   const value = parseFloat(price.match(/\d+/)[0]);
-  const db=firestore.collection("cart"); 
+
+  const user = {...GetUser()};
+  const db=firestore.collection(`${user.uid}`); 
   
+  // create notification for adding and removing product to cart 
+
   let addProduct= () => {
     db
       .add({
@@ -49,7 +53,7 @@ const SingleProduct = ({ product }) => {
         Brand: <span className="font-semibold capitalize">{brand}</span>
       </p>
       <p className="text-sm text-gray-600">
-        Price: <span className="text-rose-500 font-semibold">₹ {value}</span>
+        Price: <span className="text-rose-500 font-semibold">{price}</span>
       </p>
       <div className="flex justify-between items-center">
         <Link
@@ -61,13 +65,16 @@ const SingleProduct = ({ product }) => {
             More Info
           </button>
         </Link>
-        <button
-          // onClick={() => console.log("ksk")}
-          onClick={addProduct}
-          className="bg-orange-400 text-orange-50 hover:bg-orange-50 hover:text-orange-400 duration-300 border border-orange-400 px-2 py-1 rounded-md"
-        >
-          Add to cart
-        </button>
+        {user.displayName !== undefined ? 
+          <button
+            onClick={addProduct}
+            className="bg-orange-400 text-orange-50 hover:bg-orange-50 hover:text-orange-400 duration-300 border border-orange-400 px-2 py-1 rounded-md"
+          >
+            Add to cart
+          </button>
+          : <button></button>
+        }
+        
       </div>
     </div>
   );
