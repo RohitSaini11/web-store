@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { firestore } from "../firebase/firebase";
 
-const ProductDetails = () => {
+const ProductDetails = (props) => {
   const { state: product } = useLocation();
-
+  const user = {...props.user};
   const { img, title, description, category, brand, rating, price } = product;
   const value = parseFloat(price.match(/\d+/)[0]);
   const db=firestore.collection("cart"); 
@@ -61,12 +61,13 @@ const ProductDetails = () => {
               <span>{rating.slice(3)}</span>
             </span>
           </h3>
-          <button
-            onClick={addProduct}
-            className="bg-orange-500 text-orange-50 px-2 py-1 mt-4"
-          >
-            Add to cart
-          </button>
+          { user.displayName !==undefined ?
+            <button onClick={addProduct} className="bg-orange-500 text-orange-50 px-2 py-1 mt-4">
+              Add to cart
+            </button>
+            :<button></button>
+          }
+          
         </div>
       </div>
       <Link
