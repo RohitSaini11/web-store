@@ -6,7 +6,7 @@ const Booking = () => {
   const [sub, setSub] = useState("");
   const [date, setDate] = useState("");
   const [tnx, setTnx] = useState("");
-  const [formData, setFormData] = useState(""); //form data are saved here
+  // const [formData, setFormData] = useState(""); //form data are saved here
   // const styles = {
   //     backgroundImage:"https://images.unsplash.com/photo-1622037022824-0c71d511ef3c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')"
   // }
@@ -14,9 +14,10 @@ const Booking = () => {
   function handleSubmit(e) {
     e.preventDefault();
     setTnx("Thanks for booking!");
-    setFormData(<p>{sub + " " + date}</p>);
+    // setFormData(<p>{sub + " " + date}</p>);
   }
-  return (
+  
+  return(
     <section className="">
       <div
         // style={styles}
@@ -52,7 +53,7 @@ const Booking = () => {
           </button>
         </form>
       </div>
-      <p className="text-center text-green-500 pb-10">{tnx}</p>
+      <p className="text-center  text-green-500 pb-10">{tnx}</p>
       <BestSelling />
     </section>
   );

@@ -13,7 +13,7 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { auth } from "./firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { NotificationContainer, NotificationManager } from 'react-notifications';
+import { NotificationContainer } from 'react-notifications';
 
 
 function App() {
@@ -50,7 +50,6 @@ function App() {
           if (user) {
             // User is signed in, see docs for a list of available properties
             // https://firebase.google.com/docs/reference/js/firebase.User
-            const uid = user.uid;
             setUser(user);
             // ...
           } 
