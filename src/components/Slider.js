@@ -61,7 +61,8 @@ function Slider() {
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
         className='w-full h-full bg-center bg-cover hover:backdrop-blur-lg duration-500 flex justify-center items-center'
       >
-        <div className='flex flex-col gap-5 items-start pl-20 container bg-black/70 w-full h-full justify-center'>
+        
+        <div className='flex flex-col gap-5 items-start pl-20  bg-black/70 w-full h-full justify-center'>
             <h1 className='text-7xl text-violet-50 font-medium w-4/5'>{slides[currentIndex].headline}</h1>
             <p  className="text-gray-50 w-3/5"> {slides[currentIndex].body}</p>
             <Link 
@@ -71,6 +72,7 @@ function Slider() {
                 Shop Now
             </Link>
         </div>
+        
       </div>
       {/* Left Arrow */}
       <div className='hidden group-hover:block z-[1] absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/90 text-white cursor-pointer'>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { firestore } from "../firebase/firebase";
 import GetUser from "./GetUser";
+import { NotificationManager } from 'react-notifications';
 
 
 
@@ -24,7 +25,7 @@ const SingleProduct = ({ product }) => {
         title: product.title.slice(0, 20)
       })
       .then((docRef)=>{
-        console.log("Product added to firebase",docRef);
+        NotificationManager.info('Item added to cart.')
       })
       .catch((error)=>{
         console.log('ERROR :',error);
@@ -76,6 +77,7 @@ const SingleProduct = ({ product }) => {
         }
         
       </div>
+      
     </div>
   );
 };

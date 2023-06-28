@@ -9,14 +9,12 @@ import Footer from "./components/Footer";
 import Login from "./pages/LogIn";
 import Signup from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
-import 
-{ 
-  Routes,
-  Route
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {auth} from "./firebase/firebase";
-import {onAuthStateChanged} from "firebase/auth";
+import { auth } from "./firebase/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+
 
 function App() {
 
@@ -59,6 +57,7 @@ function App() {
         });
   })
   
+
   return (
     <> 
     <Navbar user={user} setUser={setUser} />
@@ -72,7 +71,7 @@ function App() {
 
       <Route path="/Signup" element={<Signup setUser={setUser} />} />
 
-      <Route path="/Product" element={<Product/>} />
+      <Route path="/Product" element={<Product />} />
 
       <Route path="Product/ShowDetails/:id" element={<ProductDetails />} />
 
@@ -80,12 +79,16 @@ function App() {
 
       <Route path="/Booking" element={<Booking />} />
         
-      <Route path="/Contact" element={<Contact/>} />
+      <Route path="/Contact" element={<Contact />} />
     
       <Route path="/Cart" element={<Cart user={user} />} />
 
       <Route path="*" element={<NotFound />} />
+
+      
+
     </Routes>
+    <NotificationContainer/>
     <Footer />
     </>
   );

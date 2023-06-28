@@ -26,7 +26,7 @@ function Navbar(props){
     }
     if(user.displayName!==undefined){
         return(
-            <nav className=" shadow-lg bg-gray-100 py-4 px-5 flex justify-between  items-center container mx-auto">
+            <nav className=" shadow-lg w-full bg-gray-100 py-4 px-5 flex justify-between  items-center mx-auto">
                 <div className="">
                     <Link className="text-orange-700 font-normal  text-4xl" >WebStore</Link>
                 </div>

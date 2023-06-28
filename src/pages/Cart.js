@@ -4,6 +4,8 @@ import CartItem from '../components/CartItem';
 import { auth,firestore } from "../firebase/firebase";
 import GetUser from '../components/GetUser';
 import {useNavigate } from 'react-router-dom';
+import { NotificationManager } from 'react-notifications';
+
 const Cart = (props) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -13,6 +15,7 @@ const Cart = (props) => {
 
     // const db=firestore.collection("cart");
     const db=firestore.collection(`${user.uid}`);
+    
     useEffect(() => {
         if(user.uid === undefined){
           navigate('/');
@@ -78,7 +81,7 @@ const Cart = (props) => {
         docRef
           .delete()
           .then(() => {
-            console.log("Deleted Successfully");
+            NotificationManager.info('Item Deleted from Cart.')
         })
         .catch((error) => {
             console.log("ERROR :", error);
@@ -95,20 +98,24 @@ const Cart = (props) => {
         return cartTotal;
     };
 
+    const placeOrder = () =>{
+      console.log("order Placed");
+    }
 
     return(
       <div className="cart min-h-[85vh]"> 
-          <div className='grid grid-cols-3 '> 
-            {loading && <h1 className='font-semibold text-2xl text-center'>Loading....</h1>}
+
+            {loading && <h1 className='font-semibold text-2xl text-center mt-40'>Loading....</h1>}
             
             {products.length === 0 && !loading ? 
               // <div className='h-[5rem] flex items-center justify-center'>
               //   <h1 className='font-semibold text-2xl'>Your cart is empty.</h1>
               // </div>  
-              <h1 className='font-semibold text-2xl'>Your cart is empty.</h1>
+              <h1 className='font-semibold text-2xl text-center mt-40'>Your cart is empty.</h1>
               :
               <></>
-            }         
+            }
+          <div className='grid grid-cols-3 '>    
             { 
               products.map((product) => {
                 return <CartItem  
@@ -126,6 +133,8 @@ const Cart = (props) => {
               products.length !== 0 && 
               <div style={{ padding: 10, fontSize: 20, fontWeight: 'bolder' ,textAlign:'center'}} className='w-[100%] flex justify-center'>
                 <p className=' w-[10rem]  bg-orange-400 text-white rounded-md p-1'>Total: {getCartTotal()} $</p>
+
+                <button onClick={placeOrder}>Place order!</button>
               </div> 
             }  
 
