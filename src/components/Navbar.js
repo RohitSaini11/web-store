@@ -52,7 +52,7 @@ function Navbar(props){
                     {   user.displayName !== undefined ? 
                         <div id="username_nav" className="  text-white min-w-[5rem] font-semibold p-1 flex gap-5" >
                             <p className="text-center cursor-default bg-orange-300 px-3">Hello! <br/> {user.displayName}</p>
-                            <button className="bg-red-500 text-white p-1" onClick={signout}>Log out!</button>
+                            <button className="text-red-600 hover:underline p-1" onClick={signout}>Log out!</button>
                         </div>
                         :
                         <div></div>
