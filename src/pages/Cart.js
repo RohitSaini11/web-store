@@ -145,10 +145,10 @@ const Cart = (props) => {
             
             {
               products.length !== 0 && 
-              <div style={{ padding: 10, fontSize: 20, fontWeight: 'bolder' ,textAlign:'center'}} className='w-[100%] flex justify-center'>
+              <div style={{ padding: 10, fontSize: 20, fontWeight: 'bolder' ,textAlign:'center'}} className='w-[100%] flex  gap-2 justify-center'>
                 <p className=' w-[10rem]  bg-orange-400 text-white rounded-md p-1'>Total: {getCartTotal()} $</p>
                 {/* Place order buttun here */}
-                <button onClick={placeOrder}>Place order!</button>
+                <button className='bg-orange-400 text-white rounded-md p-1' onClick={placeOrder}>Place order!</button>
               </div> 
             }  
 

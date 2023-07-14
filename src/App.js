@@ -77,14 +77,14 @@ function App() {
       <Route path="ShowDetails/:id" element={<ProductDetails  user={user} />} />
 
       <Route path="/Booking" element={<Booking />} />
+
+      <Route path="/Booking/ShowDetails/:id" element={<ProductDetails  user={user} />} />
         
       <Route path="/Contact" element={<Contact />} />
     
       <Route path="/Cart" element={<Cart user={user} />} />
 
       <Route path="*" element={<NotFound />} />
-
-      
 
     </Routes>
     <NotificationContainer/>

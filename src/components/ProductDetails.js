@@ -39,7 +39,7 @@ const ProductDetails = (props) => {
           </p>
           <h2 className="text-4xl">{title.slice(0, 30)}</h2>
           <span className="font-semibold">
-            Price: <span className="text-2xl">₹ {value}</span>
+            Price: <span className="text-2xl">{price}</span>
           </span>
           <span className="font-semibold">Brand: {brand}</span>
           <div className="flex flex-col gap-2">
